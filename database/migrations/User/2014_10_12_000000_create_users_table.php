@@ -17,11 +17,17 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->integer('role')->default(2);
+            $table->integer('score');
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::statement("
+        INSERT INTO `users` (`name`,`email`,`password`,`role`,`score`) VALUES
+        ('superadmin','super@admin.com','superadmin123',1,0)
+        ");
     }
 
     /**
