@@ -19,15 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('role')->default(2);
-            $table->integer('score');
+            $table->integer('score')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
-
-        DB::statement("
-        INSERT INTO `users` (`name`,`email`,`password`,`role`,`score`) VALUES
-        ('superadmin','super@admin.com','superadmin123',1,0)
-        ");
     }
 
     /**
