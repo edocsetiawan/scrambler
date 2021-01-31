@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\Models\User;
+use App\Models\GameLog;
 use Validator;
 
 class UserController extends Controller
@@ -19,7 +20,6 @@ class UserController extends Controller
      */
     public function login()
     {
-        Log::error(request('email'));
         if(Auth::attempt(['email' => request('email'),'password' => request('password')])){
             $username = Auth::user();
             $username['token'] = $username->createToken('nApp')->accessToken;
@@ -71,7 +71,8 @@ class UserController extends Controller
      */
     public function userDetail()
     {
-        $user = Auth::user();
+        $user['data'] = Auth::user();
+        $user['game_history'] = GameLog::where('user_id',$user['data']->id)->get();
         if($user){
             return $this->responseApi('ok',$user,'User found');
         }else{

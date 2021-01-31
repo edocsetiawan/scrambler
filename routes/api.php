@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login','App\Http\Controllers\Api\UserController@login');
 Route::post('register','App\Http\Controllers\Api\UserController@register');
+Route::get('wordlist','App\Http\Controllers\Api\GameController@getWords');
 
 Route::group(['middleware' => 'auth:api'], function(){
     Route::get('getme','App\Http\Controllers\Api\UserController@userDetail');
     Route::post('logout','App\Http\Controllers\Api\UserController@logout');
+    Route::post('update-score','App\Http\Controllers\Api\GameController@updateScore');
 });
