@@ -72,7 +72,10 @@ class UserController extends Controller
     public function userDetail()
     {
         $user['data'] = Auth::user();
-        $user['game_history'] = GameLog::where('user_id',$user['data']->id)->get();
+        $user['game_history'] = GameLog::join('words','game_log.word_id','words.id')->select('words.words','game_log.result')->where('user_id',$user['data']->id)->get();
+        foreach($user['game_history'] as $k){
+            $k->result = ($k->result == 1) ? 'Correct' : 'Wrong';
+        }
         if($user){
             return $this->responseApi('ok',$user,'User found');
         }else{

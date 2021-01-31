@@ -10,20 +10,28 @@ import VueAxios from 'vue-axios';
 import axios from 'axios';
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
-import VueMaterial from 'vue-material'
-import 'vue-material/dist/vue-material.min.css'
-import 'vue-material/dist/theme/default.css'
-
-Vue.use(VueMaterial)
 
 import LoginComponent from './components/Login.vue';
+import LandingComponent from './components/LandingPage.vue';
+import GameComponent from './components/Game.vue';
 
 const routes = [
     {
         name : 'login',
         path: '/',
         component : LoginComponent
+    },
+    {
+        name : 'landingpage',
+        path: '/landingpage',
+        component : LandingComponent
+    },
+    {
+        name : 'gamepage',
+        path : '/gamepage',
+        component : GameComponent
     }
+
 ]
 const router = new VueRouter({ mode: 'history', routes: routes});
 const app = new Vue(Vue.util.extend({ router }, App)).$mount('#app');

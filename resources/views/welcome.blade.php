@@ -6,11 +6,18 @@
         <title>Laravel</title>
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
         <link href="{{ mix('css/app.css') }}" type="text/css" rel="stylesheet" />
+        <!-- Add Bootstrap and Bootstrap-Vue CSS to the <head> section -->
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css"/>
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css"/>
+
+<!-- Add Vue and BootstrapVue scripts just before the closing </body> tag -->
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
         <meta name="csrf-token" value="{{ csrf_token() }}" />
     </head>
     <body>
         <div id="app">
-          <example-component></example-component>
+        
         </div>
         <script src="{{ mix('js/app.js') }}" type="text/javascript"></script>
     </body>
