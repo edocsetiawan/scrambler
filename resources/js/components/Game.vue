@@ -44,7 +44,7 @@ export default {
                 alert("Please login first!");
                 this.$router.push({name: 'login'});
             }else{
-                let url = `http://localhost:8000/api/wordlist`;
+                let url = `/api/wordlist`;
                 this.axios.get(url).then((response)=>{
                     if(response.data.success){
                         this.question.word_id = response.data.data.id;
@@ -76,7 +76,7 @@ export default {
                 }else{
                     alert("Your answer is wrong, the correct answer is : "+this.question.correct_answer)
                 }
-                let url = `http://localhost:8000/api/update-score`;
+                let url = `/api/update-score`;
                 this.axios.post(url,this.question,{
                     headers :{
                         'Authorization': 'Bearer '+localStorage.getItem('token')

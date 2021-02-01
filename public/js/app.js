@@ -1912,7 +1912,7 @@ __webpack_require__.r(__webpack_exports__);
       if (this.word === '') {
         alert("Error, word can't empty");
       } else {
-        var url = "http://localhost:8000/api/add-word";
+        var url = "/api/add-word";
         this.axios.post(url, this.parameter).then(function (response) {
           if (response.data.success) {
             alert("Insert word success!");
@@ -1991,7 +1991,7 @@ __webpack_require__.r(__webpack_exports__);
           name: 'login'
         });
       } else {
-        var url = "http://localhost:8000/api/wordlist";
+        var url = "/api/wordlist";
         this.axios.get(url).then(function (response) {
           if (response.data.success) {
             _this.question.word_id = response.data.data.id;
@@ -2027,7 +2027,7 @@ __webpack_require__.r(__webpack_exports__);
           alert("Your answer is wrong, the correct answer is : " + this.question.correct_answer);
         }
 
-        var url = "http://localhost:8000/api/update-score";
+        var url = "/api/update-score";
         this.axios.post(url, this.question, {
           headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -2148,7 +2148,7 @@ __webpack_require__.r(__webpack_exports__);
           name: 'login'
         });
       } else {
-        var url = "http://localhost:8000/api/getme";
+        var url = "/api/getme";
         this.axios.get(url, {
           headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token')

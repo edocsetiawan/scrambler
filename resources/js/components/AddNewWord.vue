@@ -35,7 +35,7 @@ export default {
             if(this.word === ''){
                 alert("Error, word can't empty");
             }else{
-                let url = `http://localhost:8000/api/add-word`;
+                let url = `/api/add-word`;
                 this.axios.post(url, this.parameter).then((response) => {
                     if(response.data.success){  
                         alert("Insert word success!");

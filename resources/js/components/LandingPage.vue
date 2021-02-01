@@ -82,7 +82,7 @@ export default {
                 alert("Please login first!");
                 this.$router.push({name: 'login'});
             }else{
-                let url = `http://localhost:8000/api/getme`;
+                let url = `/api/getme`;
                 this.axios.get(url,{
                     headers : {
                         'Authorization': 'Bearer '+localStorage.getItem('token')
