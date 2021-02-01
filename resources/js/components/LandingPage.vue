@@ -5,13 +5,19 @@
       <div class="card">
         <div class="card-header">Player Recap</div>
         <div class="card-body">
-            <div class="form-group">
+            <div class="form-group" v-if="user.role == 2">
                 <label for="name">Gladiator : </label> {{user.name}}
+                <button type="submit" class="btn btn-primary" style="background-color : red !important;border-color : red !important;float:right" @click="logout()">LOGOUT</button>
+                <button type="submit" class="btn btn-primary" style="background-color : blue !important;border-color : blue !important;float : right; margin-right:10px;" @click="click()">PLAY</button>
             </div>
-            <div class="form-group">
+            <div class="form-grup" v-if="user.role == 1">
+                <label for="name">Welcome back : </label> {{user.name}}
+                <button type="submit" class="btn btn-primary" style="background-color : red !important;border-color : red !important;float:right" @click="logout()">LOGOUT</button>
+            </div>
+            <div class="form-group" v-if="user.role == 2">
                 <label for="score">Score : </label> {{user.score}}
             </div>
-            <table class="table table-bordered">
+            <table class="table table-bordered" v-if="user.role == 2">
                 <thead>
                     <tr>
                         <th>Words</th>
@@ -25,7 +31,6 @@
                     </tr>
                 </tbody>
             </table>
-            <button type="submit" class="btn btn-primary" style="background-color : red !important;border-color : red !important" @click="click()">PLAY</button>
         </div>
       </div>
     </div>
@@ -68,10 +73,16 @@ export default {
                 }else{
                     alert("something went wrong");
                 }
-            
-          });
+            });
             }
 
+        },
+        logout : function(){
+            if(confirm("Do you really want to leave?")){
+                localStorage.removeItem('token');
+                alert("See you on the next game!");
+                this.$router.push({name: 'login'});
+            }
         }
     }
 }

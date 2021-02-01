@@ -14,6 +14,7 @@ Vue.use(VueAxios, axios);
 import LoginComponent from './components/Login.vue';
 import LandingComponent from './components/LandingPage.vue';
 import GameComponent from './components/Game.vue';
+import RegisterComponent from './components/RegisterPage.vue';
 
 const routes = [
     {
@@ -30,6 +31,11 @@ const routes = [
         name : 'gamepage',
         path : '/gamepage',
         component : GameComponent
+    },
+    {
+        name : 'register',
+        path : '/register',
+        component : RegisterComponent
     }
 
 ]

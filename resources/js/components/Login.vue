@@ -1,4 +1,3 @@
-//Login.vue
 <template>
   <div class="row justify-content-md-center">
     <div class="col-md-6">
@@ -14,8 +13,9 @@
               <label for="password">Password</label>
               <input type="password" class="form-control" v-model="parameter.password">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Login</button>
           </form>
+          <button class="btn btn-primary" style="float:right;margin-top:-38px;background-color:green;border-color:green" @click="register()">Register</button>
         </div>
       </div>
     </div>
@@ -29,6 +29,11 @@ export default {
             parameter : {}
         }
     },
+    mounted(){
+      if(localStorage.getItem('token') != null){
+          this.$router.push({name: 'landingpage'});
+      }
+    },
     methods :{
         userLogin() {
           let url = `http://localhost:8000/api/login`;
@@ -41,6 +46,9 @@ export default {
             }
             
           });
+        },
+        register() {
+          this.$router.push({name: 'register'});
         }
     }
 }

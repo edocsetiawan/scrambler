@@ -39,7 +39,7 @@ class GameController extends Controller
     {
         $data           = $request->all();
         $user           = Auth::user();
-
+        log::error($data);
         /** insert to game log  */
         $game_log['user_id'] = $user->id;
         $game_log['word_id'] = $data['word_id'];
@@ -51,13 +51,6 @@ class GameController extends Controller
         $final_score    = (int)$user->score + $score;
         User::where('id',$user->id)->update(['score' => $final_score]);
 
-        /**get new words*/
-        $new_words = $this->wordData();
-
-        if($new_words){
-            return $this->responseApi('ok',$new_words,'Update score success');    
-        }else{
-            return $this->responseApi('error','','Something went wrong');
-        }
+        return $this->responseApi('ok','','Update score success');
     }
 }
