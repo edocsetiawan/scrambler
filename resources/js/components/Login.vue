@@ -36,7 +36,7 @@ export default {
     },
     methods :{
         userLogin() {
-          let url = `http://localhost:8000/api/login`;
+          let url = `/api/login`;
           this.axios.post(url, this.parameter).then((response) => {
             if(response.data.success){
                 localStorage.setItem('token', response.data.data.token) 

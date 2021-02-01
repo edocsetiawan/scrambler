@@ -2239,7 +2239,7 @@ __webpack_require__.r(__webpack_exports__);
     userLogin: function userLogin() {
       var _this = this;
 
-      var url = "http://localhost:8000/api/login";
+      var url = "/api/login";
       this.axios.post(url, this.parameter).then(function (response) {
         if (response.data.success) {
           localStorage.setItem('token', response.data.data.token);
