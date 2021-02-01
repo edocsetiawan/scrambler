@@ -33,6 +33,16 @@ class GameController extends Controller
     }
 
     /**
+     * add new word
+     */
+    public function addWords(Request $request)
+    {
+        $data = $request->all();
+        Words::create($data);
+        return $this->responseApi('ok','','New Word Add');
+    }
+
+    /**
      * update score user
      */
     public function updateScore(Request $request)

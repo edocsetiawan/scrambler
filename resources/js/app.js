@@ -15,6 +15,8 @@ import LoginComponent from './components/Login.vue';
 import LandingComponent from './components/LandingPage.vue';
 import GameComponent from './components/Game.vue';
 import RegisterComponent from './components/RegisterPage.vue';
+import UserDetailComponent from './components/UserHistory.vue';
+import NewWordComponent from './components/AddNewWord.vue';
 
 const routes = [
     {
@@ -36,6 +38,17 @@ const routes = [
         name : 'register',
         path : '/register',
         component : RegisterComponent
+    },
+    {
+        name: 'userhistory',
+        path: '/user-history', 
+        props: true,
+        component: UserDetailComponent
+    },
+    {
+        name : 'newword',
+        path : '/new-word',
+        component : NewWordComponent
     }
 
 ]
